@@ -13,7 +13,7 @@
 <style>
   .box-container {
     text-decoration: none;
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 120px;
   }
 </style>
