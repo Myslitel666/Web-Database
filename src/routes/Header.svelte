@@ -22,7 +22,7 @@
 </script>
 
 <Header>
-  <button style:gap="0.5rem" onclick={() => goto("/settings")}>
+  <button style:gap="0.5rem" onclick={() => goto("/database")}>
     <p style:font-size="26px">
       <span style:color={svelteColor} style:transition="all 0.3s"> WEB & </span>
       <span style:color={elegantColor} style:transition="all 0.3s">

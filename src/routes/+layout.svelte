@@ -8,7 +8,9 @@
   <ScrollbarContainer>
     <div class="app">
       <main>
-        <slot />
+        <div style:padding="16px">
+          <slot />
+        </div>
       </main>
     </div>
   </ScrollbarContainer>
