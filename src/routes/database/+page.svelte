@@ -2,7 +2,45 @@
   import ProjectBox from "./ProjectBox.svelte";
   import { themeStore } from "svelte-elegant/stores";
   import { onMount } from "svelte";
-  import { Stopwatch } from "svelte-elegant/icons-elegant";
+
+  // Определяем массив технологий
+  const technologies = [
+    {
+      logo: "/logo/java-script.png",
+      name: "JavaScript",
+      description: "Collected data for JavaScript.",
+    },
+    {
+      logo: "/logo/type-script.svg",
+      name: "TypeScript",
+      description: "Collected data for TypeScript.",
+    },
+    {
+      logo: "/logo/react.svg",
+      name: "React",
+      description: "Collected data for React.",
+    },
+    {
+      logo: "/logo/svelte.svg",
+      name: "Svelte",
+      description: "Collected data for Svelte.",
+    },
+    {
+      logo: "/logo/node-js.svg",
+      name: "Node.js",
+      description: "Collected data for Node.js.",
+    },
+    {
+      logo: "/logo/next-js.svg",
+      name: "Next.js",
+      description: "Collected data for Next.js.",
+    },
+    {
+      logo: "/logo/vs-code.svg",
+      name: "Visual Studio Code",
+      description: "Collected data for Visual Studio Code.",
+    },
+  ];
 
   onMount(() => {});
 </script>
@@ -12,113 +50,32 @@
     This website presents summaries of documentation for tools and frameworks
     essential for web developers.
   </p>
+
   <div class="container">
-    <ProjectBox href="/attributions">
-      <img src="/logo/java-script.png" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>JavaScript</span>
+    {#each technologies as tech}
+      <ProjectBox href="/attributions">
+        <img
+          src={tech.logo}
+          alt={tech.name}
+          style:height="50px"
+          style:width="50px"
+        />
+        <div class="content">
+          <div>
+            <span>{tech.name}</span>
+          </div>
+          <p
+            style:font-size="16px"
+            style:text-align="justify"
+            style:text-justify="inter-word"
+          >
+            {tech.description}
+          </p>
         </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Turns static pages into dynamic apps.
-        </p>
-      </div></ProjectBox
-    >
-    <ProjectBox href="/attributions">
-      <img src="/logo/type-script.svg" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>TypeScript</span>
-        </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Collected data for TypeScript.
-        </p>
-      </div>
-    </ProjectBox>
-    <ProjectBox href="/attributions">
-      <img src="/logo/react.svg" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>React</span>
-        </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Collected data for React.
-        </p>
-      </div>
-    </ProjectBox>
-    <ProjectBox href="/attributions">
-      <img src="/logo/svelte.svg" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>Svelte</span>
-        </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Collected data for Svelte.
-        </p>
-      </div>
-    </ProjectBox>
-    <ProjectBox href="/attributions">
-      <img src="/logo/node-js.svg" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>Node.js</span>
-        </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Collected data for Node.js.
-        </p>
-      </div>
-    </ProjectBox>
-    <ProjectBox href="/attributions">
-      <img src="/logo/next-js.svg" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>Next.js</span>
-        </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Collected data for Next.js.
-        </p>
-      </div>
-    </ProjectBox>
-    <ProjectBox href="/attributions">
-      <img src="/logo/vs-code.svg" style:height="50px" style:width="50px" />
-      <div class="content">
-        <div>
-          <span>Visual Studio Code</span>
-        </div>
-        <p
-          style:font-size="16px"
-          style:text-align="justify"
-          style:text-justify="inter-word"
-        >
-          Collected data for Visual Studio Code.
-        </p>
-      </div>
-    </ProjectBox>
+      </ProjectBox>
+    {/each}
   </div>
+
   <p>
     Logos of development tools are sourced from <a
       style:color={$themeStore.palette.primary}
@@ -140,7 +97,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* ← Это переносит на новую строку */
+    flex-wrap: wrap;
     gap: 10px;
   }
 
@@ -155,22 +112,5 @@
     flex-direction: column;
     gap: 10px;
     height: 100%;
-  }
-
-  .width {
-    width: 6.75rem;
-  }
-
-  .mgn-top {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .switch-container {
-    display: flex;
-    align-items: center;
-    margin-top: 0.77rem;
   }
 </style>
