@@ -1,14 +1,17 @@
 <script>
-  import ProjectBox from "./ProjectBox.svelte";
+  import TechnoBox from "./TechnoBox.svelte";
   import { themeStore } from "svelte-elegant/stores";
   import { onMount } from "svelte";
   import { getTechnologies } from "./fetch";
 
+  let isInitialized = false;
+
   // Определяем массив технологий
-  let technologies = [{}];
+  let technologies = [{ logo: "", name: "", description: "" }];
 
   onMount(async () => {
     technologies = await getTechnologies();
+    isInitialized = true;
   });
 </script>
 
@@ -18,30 +21,32 @@
     essential for web developers.
   </p>
 
-  <div class="container">
-    {#each technologies as tech}
-      <ProjectBox href="/attributions">
-        <img
-          src={tech.logo}
-          alt={tech.name}
-          style:height="50px"
-          style:width="50px"
-        />
-        <div class="content">
-          <div>
-            <span>{tech.name}</span>
+  {#if isInitialized}
+    <div class="container">
+      {#each technologies as tech}
+        <TechnoBox href="/attributions">
+          <img
+            src={tech.logo}
+            alt={tech.name}
+            style:height="50px"
+            style:width="50px"
+          />
+          <div class="content">
+            <div>
+              <span>{tech.name}</span>
+            </div>
+            <p
+              style:font-size="16px"
+              style:text-align="justify"
+              style:text-justify="inter-word"
+            >
+              {tech.description}
+            </p>
           </div>
-          <p
-            style:font-size="16px"
-            style:text-align="justify"
-            style:text-justify="inter-word"
-          >
-            {tech.description}
-          </p>
-        </div>
-      </ProjectBox>
-    {/each}
-  </div>
+        </TechnoBox>
+      {/each}
+    </div>
+  {/if}
 
   <p>
     Logos of development tools are sourced from <a
