@@ -2,47 +2,14 @@
   import ProjectBox from "./ProjectBox.svelte";
   import { themeStore } from "svelte-elegant/stores";
   import { onMount } from "svelte";
+  import { getTechnologies } from "./fetch";
 
   // Определяем массив технологий
-  const technologies = [
-    {
-      logo: "/logo/java-script.png",
-      name: "JavaScript",
-      description: "Collected data for JavaScript.",
-    },
-    {
-      logo: "/logo/type-script.svg",
-      name: "TypeScript",
-      description: "Collected data for TypeScript.",
-    },
-    {
-      logo: "/logo/react.svg",
-      name: "React",
-      description: "Collected data for React.",
-    },
-    {
-      logo: "/logo/svelte.svg",
-      name: "Svelte",
-      description: "Collected data for Svelte.",
-    },
-    {
-      logo: "/logo/node-js.svg",
-      name: "Node.js",
-      description: "Collected data for Node.js.",
-    },
-    {
-      logo: "/logo/next-js.svg",
-      name: "Next.js",
-      description: "Collected data for Next.js.",
-    },
-    {
-      logo: "/logo/vs-code.svg",
-      name: "Visual Studio Code",
-      description: "Collected data for Visual Studio Code.",
-    },
-  ];
+  let technologies = [{}];
 
-  onMount(() => {});
+  onMount(async () => {
+    technologies = await getTechnologies();
+  });
 </script>
 
 <div class="page">
