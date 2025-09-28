@@ -24,7 +24,7 @@
   {#if isInitialized}
     <div class="container">
       {#each technologies as tech}
-        <TechnoBox href="/attributions">
+        <TechnoBox href={`/technology?name=${encodeURIComponent(tech.name)}`}>
           <img
             src={tech.logo}
             alt={tech.name}
