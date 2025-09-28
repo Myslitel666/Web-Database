@@ -7,7 +7,6 @@
   let technology = { name: "", description: "", logo: "", data_source: "" };
   let alias = "";
   let link = "";
-  let isInitialized = false;
 
   async function getTechnologyAsync(technologyName) {
     technology = await getTechnology(technologyName);
@@ -23,11 +22,10 @@
     if (technologyName) {
       getTechnologyAsync(technologyName);
     }
-    isInitialized = true;
   });
 </script>
 
-{#if isInitialized}
+{#if technology.name}
   <div class="page">
     <div class="technology">
       <img
@@ -55,6 +53,7 @@
         </p>
       </div>
     </div>
+    <p>Summary based on official docs — see Data Source above.</p>
   </div>
 {/if}
 
@@ -64,6 +63,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 7px;
   }
 
   .technology {
